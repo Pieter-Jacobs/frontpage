@@ -32,4 +32,27 @@ def test_upvoting(deploy_editorial_fixture):
     editorial.initArticle("This is the first text", {"from": accounts[0]})
     for upvote in range(upvotes):
         editorial.upvoteArticle(0)
+    # Assert
     assert upvotes == editorial.getUpvotes(0)
+
+def test_frontpage(deploy_editorial_fixture):
+    # Arrange
+    editorial = deploy_editorial_fixture
+    least_upvoted_text = "This is the worst text"
+    middle_text = "This is the middle text"
+    most_upvoted_text = "This is the most upvoted text"
+    # Act
+    editorial.initArticle(least_upvoted_text, {"from": accounts[0]})
+    editorial.initArticle(middle_text, {"from": accounts[2]})
+    editorial.initArticle(most_upvoted_text, {"from": accounts[1]})
+    for upvote in range(3):
+        editorial.upvoteArticle(0)
+    for upvote in range(5):
+        editorial.upvoteArticle(1)
+    for upvote in range(10):
+        editorial.upvoteArticle(2)
+    editorial.pinArticleToFrontPage()
+    articles = editorial.getFrontpageArticles()
+    # Assert
+    assert most_upvoted_text == articles[0][1]
+

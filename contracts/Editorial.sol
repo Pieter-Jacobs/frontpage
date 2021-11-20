@@ -22,7 +22,7 @@ contract Editorial {
         return submittedArticles[mostUpvotedArticleIndex];
     }
 
-    function pinArticleToFrontPage() private {
+    function pinArticleToFrontPage() public {
         Article memory article = findMostUpvotedArticle();
         frontpageArticles.push(article);
     }
@@ -52,4 +52,7 @@ contract Editorial {
         return submittedArticles;
     }
 
+    function getFrontpageArticles() public view returns (Article[] memory _frontpageArticles){
+        return frontpageArticles;
+    }
 }
