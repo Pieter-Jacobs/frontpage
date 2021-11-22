@@ -2,17 +2,11 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
-import {ChainId, DAppProvider} from '@usedapp/core';
 import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
   <React.StrictMode>
-    <DAppProvider 
-      config={{
-        supportedChains: [ChainId.Kovan],
-      }}>
-      <App />
-    </DAppProvider>
+    <App />
   </React.StrictMode>,
   document.getElementById('root')
 );
