@@ -1,5 +1,5 @@
 export enum Tabs {
     Frontpage = "Frontpage",
-    Editorial = "Editorial",
+    Editorial = "Editorial Office",
     WritingCorner = "Writing Corner"
 }

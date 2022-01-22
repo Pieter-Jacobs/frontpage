@@ -2,7 +2,7 @@ from brownie import Editorial, accounts, config, network
 
 def deploy_editorial():
     account = None
-    if network.show_active() == 'kovan':
+    if network.show_active() == 'kovan' or network.show_active() ==  'mumbai':
         account = accounts.add(config['wallets']['from_key'])
     else: 
         account = accounts[0]
