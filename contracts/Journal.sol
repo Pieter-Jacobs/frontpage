@@ -73,25 +73,6 @@ contract Journal is KeeperCompatibleInterface {
         submittedArticles.push(article);
     }
 
-    function assignArticlePairings() external {
-        uint256 counterX = 0;
-        uint256 counterY = 1;
-        for (uint256 i = 0; i < editors.length; i++) {
-            articlesToVoteOn[editors[i]] = [counterX, counterY];
-            if (counterY >= submittedArticles.length - 1) {
-                if (counterX >= submittedArticles.length - 1) {
-                    counterX = 0;
-                    counterY = 1;
-                } else {
-                    counterX += 1;
-                    counterY = counterX + 1;
-                }
-            } else {
-                counterY += 1;
-            }
-        }
-    }
-
     function voteForArticles(uint256 articleIndex) external onlyEditor {
         require(hasVoted[msg.sender] != true, "You have already voted.");
         require(
@@ -101,6 +82,7 @@ contract Journal is KeeperCompatibleInterface {
         submittedArticles[articleIndex].voters.push(msg.sender);
         hasVoted[msg.sender] = true;
     }
+
 
     // Vurnerable to reentrancy
     function withdrawRewards(address _withdrawer) external {

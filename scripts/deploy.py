@@ -1,13 +1,13 @@
-from brownie import Editorial, accounts, config, network
+from brownie import Journal, accounts, config, network
 
-def deploy_editorial():
+def deploy_journal():
     account = None
     if network.show_active() == 'kovan' or network.show_active() ==  'mumbai':
         account = accounts.add(config['wallets']['from_key'])
     else: 
         account = accounts[0]
-    editorial = Editorial.deploy({"from": account}, publish_source=False)
-    return editorial
+    journal = Journal.deploy(5, 5, {"from": account}, publish_source=False)
+    return journal
 
 def main():
-    deploy_editorial()
+    deploy_journal()

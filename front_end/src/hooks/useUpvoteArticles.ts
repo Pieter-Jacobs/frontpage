@@ -5,8 +5,9 @@ export default function useUpvoteArticles() {
     "upvoteArticles",
     "Upvoted Articles"
   );
-  const upvoteArticles = (votes: Array<number>) => {
-    send(votes);
+  
+  const upvoteArticles = (vote: number) => {
+    send(vote);
   };
   return upvoteArticles;
 }

@@ -13,9 +13,9 @@ export default function Frontpage() {
   return (
     <div>
       <Button onClick={handlePin}>Add best article</Button>
-      {articles.map((article: any) => 
-          <Article text={article[1]} />
-      )}
+      {articles.map((article: any) => (
+        <Article text={article[1]} inEditorial={false} />
+      ))}
     </div>
   );
 }

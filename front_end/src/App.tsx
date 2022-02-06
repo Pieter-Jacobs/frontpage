@@ -1,13 +1,11 @@
-import React, { useState, useEffect, memo } from "react";
-import logo from "./logo.svg";
+import React, { useState } from "react";
 import { useEthers, ChainId, DAppProvider } from "@usedapp/core";
-import Header from "./Components/Header";
-import { Button } from "@mui/material";
+import Header from "./components/Header";
 import "./App.css";
 import { TabContext, TabPanel } from "@mui/lab";
-import Frontpage from "./Components/Frontpage";
-import Editorial from "./Components/Editorial";
-import WritingCorner from "./Components/WritingCorner";
+import Frontpage from "./components/Frontpage";
+import Editorial from "./components/Editorial";
+import WritingCorner from "./components/WritingCorner";
 import { Tabs } from "./enums";
 
 const tabToComponent: { [key in Tabs]: JSX.Element } = {
